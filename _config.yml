@@ -36,7 +36,7 @@ exclude:
 reveal_theme: black.css
 
 # The Reveal transition
-reveal_transition: default
+reveal_transition: linear
 
 # Path to the used theme (defaults to the Reveal.js standard theme path)
 reveal_theme_path: /reveal.js/css/theme/ 
