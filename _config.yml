@@ -57,3 +57,7 @@ reveal_path: /reveal.js/
 # markdown: redcarpet
 highlighter: pygments
 # markdown_ext: ignoreme
+
+collections:
+  books:
+    output: true
