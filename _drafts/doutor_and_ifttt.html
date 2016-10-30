@@ -1,0 +1,148 @@
+---
+layout: reveal
+title:  "ドトールの話"
+date:   2016-10-27 23:12:27 +0900
+categories: slides 
+---
+
+# ドトールの話
+
+---
+# Doutor?
+
+---
+## ビル1Fにも入ってるおなじみのコーヒーチェーン店
+![ドトールの画像](/imgs/doutor_and_ifttt/doutor.JPG)
+
+---
+## 実はすごいドトールグループ
+* Excelsior caffeもドトールグループ
+* 星野珈琲もドトールグループ
+
+![Excelsior caffeの画像](/imgs/doutor_and_ifttt/excelsior.jpg)
+![星野珈琲の画像](/imgs/doutor_and_ifttt/hoshino.png)
+
+* ドトールすごい
+
+---
+## About me
+* [Censored]
+* [Censored]で最もドトールを愛する男
+* このスライドもドトールで作ってる
+
+---
+# Doutor Lifehack
+
+---
+## お得にドトールへ行く (1)
+* バリューカード
+    * 1000円単位でチャージできる
+    * チャージ時に5~10%ポイント
+    * 利用時に1%ポイント
+
+![選ばれし者だけが使えるブラックカード](/imgs/doutor_and_ifttt/blackcard.jpg)
+
+---
+## お得にドトールへ行く (2)
+* ビルのポイントカード
+    * 250円で1ポイント、20ポイントで500円券に
+    * 10%キャッシュバック
+
+---
+## ポイントカード + バリューカード
+* 組み合わせると最大21%バック!
+* バリューカードは3万円まで入るので、最大6300円お得！
+* 6300円あるとブレンドコーヒーSが28杯飲める！
+* すごい！！！！
+
+---
+# 本題
+
+---
+# Wi-fi in Doutor
+
+---
+## Wi-fi in Doutor
+* ドトールはwii2 Premiumと契約してるのでwifi使い放題
+![wifi接続画面]()
+
+---
+## メールを送るとパスワードが返ってくる
+![帰ってきたメールの画面](/imgs/doutor_and_ifttt/wifi_mail.png)
+
+---
+## パスワードを入力するとwifiが使えるようになる
+![パスワード入力中の画面]
+![パスワード入力後画面]
+
+---
+## Problem
+* いちいちQRコードでスキャンしないといけない
+* めんどくさい
+* 解決にあんまり頑張りたくない
+
+---
+## Proposed Method
+
+---
+## IFTTT
+* IF [THIS] THEN [THAT]
+* イベントのトリガー(THIS)と実行する内容(THAT)の対応を自由に作れる
+* ex) [明日の予報が雨なら] -> [携帯へpush通知を送る]
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/ifttt.png)
+
+---
+## IFTTT DO Button
+* buttonをトリガー(this)にできる
+
+---
+## STEP1
+### IFTTT Buttonでメール送れるようにする
+* [Do BUTTON] -> [wifi用アドレスにメール送る]
+
+---
+## STEP2
+### 返ってきたメールをSlackに通知する
+* [Receive mail] -> [Slackへ転送]
+
+---
+## STEP3
+### buttonを押すのもめんどくさいから位置をトリガーにする
+* [位置がドトール付近なら] -> [wifi用アドレスにメール送る]
+
+---
+## どうなるか
+* [ドトールに近づく] -> [wifiのパスワードがSlackに通知される]
+
+---
+# 便利
+
+---
+## Future works
+* スマホに届いたパスワードをPCで打つのがだるい
+* 一瞬PCをwifiに繋がないとパスワードを受信できない
+
+---
+## Universal Clipboard
+* macとiPhoneでClipboardを共有
+* iPhoneでパスワードをコピーしてmacでペースト
+![universal clipboard](/imgs/doutor_and_ifttt/Universal_clipboard.png)
+---
+## TODO
+* iPhoneを買う
+
+---
+## Conclusion
+* ドトールに近づくとwifiパスワードが通知されるようにした
+* IFTTTべんり
+
+---
+## ドトールへ行こう！！
+
+---
+## 最近のマイブーム
+### スタバのカフェインレスコーヒー
+
+---
+## おわり
