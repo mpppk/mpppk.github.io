@@ -1,6 +1,6 @@
 ---
 layout: reveal
-title:  "ドトールの話"
+title:  "ドトールに近づいたらwi2のパスワードを自動で受け取る"
 date:   2016-10-27 23:12:27 +0900
 categories: slides 
 ---
@@ -8,7 +8,7 @@ categories: slides
 # ドトールの話
 
 ---
-# Doutor?
+# ドトール?
 
 ---
 ## ビル1Fにも入ってるおなじみのコーヒーチェーン店
@@ -36,9 +36,7 @@ categories: slides
 ---
 ## お得にドトールへ行く (1)
 * バリューカード
-    * 1000円単位でチャージできる
-    * チャージ時に5~10%ポイント
-    * 利用時に1%ポイント
+    * チャージ時に5~10%ポイント + 利用時に1%ポイント
 
 ![選ばれし者だけが使えるブラックカード](/imgs/doutor_and_ifttt/blackcard.jpg)
 
@@ -46,40 +44,42 @@ categories: slides
 ## お得にドトールへ行く (2)
 * ビルのポイントカード
     * 250円で1ポイント、20ポイントで500円券に
-    * 10%キャッシュバック
 
 ---
-## ポイントカード + バリューカード
-* 組み合わせると最大21%バック!
-* バリューカードは3万円まで入るので、最大6300円お得！
-* 6300円あるとブレンドコーヒーSが28杯飲める！
+### お得にドトールへ行く (3)
+* Coffee beans day
+    * 毎月末はコーヒー豆が10%OFF
+
+---
+## 全部組み合わせると31%OFF
+* バリューカードは3万円まで入る
+* ➡️ 最大9300円(コーヒー41杯分)お得！
 * すごい！！！！
 
 ---
 # 本題
 
 ---
-# Wi-fi in Doutor
+# Wi-fi in ドトール
 
 ---
 ## Wi-fi in Doutor
 * ドトールはwii2 Premiumと契約してるのでwifi使い放題
-![wifi接続画面]()
+![wifi接続画面](/imgs/doutor_and_ifttt/wi_login.png)
 
 ---
-## メールを送るとパスワードが返ってくる
-![帰ってきたメールの画面](/imgs/doutor_and_ifttt/wifi_mail.png)
+## 接続する場合は、所定のメールアドレスに空メールを送る
+![wifi接続画面](/imgs/doutor_and_ifttt/wi_qr_code.png)
 
 ---
-## パスワードを入力するとwifiが使えるようになる
-![パスワード入力中の画面]
-![パスワード入力後画面]
+### メールを送るとパスワードが返ってくる
+![帰ってきたメールの画面](/imgs/doutor_and_ifttt/wifi_mail.png)  
+パスワードを入力するとwifiが使えるようになる
 
 ---
 ## Problem
 * いちいちQRコードでスキャンしないといけない
 * めんどくさい
-* 解決にあんまり頑張りたくない
 
 ---
 ## Proposed Method
@@ -87,61 +87,66 @@ categories: slides
 ---
 ## IFTTT
 * IF [THIS] THEN [THAT]
-* イベントのトリガー(THIS)と実行する内容(THAT)の対応を自由に作れる
-* ex) [明日の予報が雨なら] -> [携帯へpush通知を送る]
+* ex) [明日の予報が雨なら] ➡️ [携帯へpush通知を送る]
 
 ![IFTTTの画像](/imgs/doutor_and_ifttt/ifttt.png)
 
 ---
-## IFTTT DO Button
-* buttonをトリガー(this)にできる
-
----
 ## STEP1
-### IFTTT Buttonでメール送れるようにする
-* [Do BUTTON] -> [wifi用アドレスにメール送る]
+### ドトールに近づいたらメールを送る
+* [ドトール付近なら] ➡️ [wifi用アドレスにメール送る]
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/location_to_mail.png)
 
 ---
 ## STEP2
 ### 返ってきたメールをSlackに通知する
-* [Receive mail] -> [Slackへ転送]
+* [Receive mail] ➡️ [Slackへ転送]
 
----
-## STEP3
-### buttonを押すのもめんどくさいから位置をトリガーにする
-* [位置がドトール付近なら] -> [wifi用アドレスにメール送る]
+![IFTTTの画像](/imgs/doutor_and_ifttt/mail_to_slack.png)
 
 ---
 ## どうなるか
-* [ドトールに近づく] -> [wifiのパスワードがSlackに通知される]
+* ドトールに近づくとパスワードがSlackに通知される
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/push_by_loaction.png)
+![IFTTTの画像](/imgs/doutor_and_ifttt/slack.png)
 
 ---
-# 便利
+# 便利！！！！！
 
 ---
-## Future works
+# Future works
+
+---
+## Prolem
 * スマホに届いたパスワードをPCで打つのがだるい
-* 一瞬PCをwifiに繋がないとパスワードを受信できない
 
 ---
 ## Universal Clipboard
 * macとiPhoneでClipboardを共有
 * iPhoneでパスワードをコピーしてmacでペースト
 ![universal clipboard](/imgs/doutor_and_ifttt/Universal_clipboard.png)
+
 ---
 ## TODO
 * iPhoneを買う
 
 ---
+## YOUR TODO
+* iPhoneを買ってあげる
+
+
+---
 ## Conclusion
-* ドトールに近づくとwifiパスワードが通知されるようにした
+* ドトールのwifiパスワード自動通知
 * IFTTTべんり
 
 ---
 ## ドトールへ行こう！！
 
 ---
-## 最近のマイブーム
+## 最近のオススメ
 ### スタバのカフェインレスコーヒー
 
 ---
