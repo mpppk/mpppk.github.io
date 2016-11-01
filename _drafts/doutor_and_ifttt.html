@@ -1,0 +1,153 @@
+---
+layout: reveal
+title:  "ドトールに近づいたらwi2のパスワードを自動で受け取る"
+date:   2016-10-27 23:12:27 +0900
+categories: slides 
+---
+
+# ドトールの話
+
+---
+# ドトール?
+
+---
+## ビル1Fにも入ってるおなじみのコーヒーチェーン店
+![ドトールの画像](/imgs/doutor_and_ifttt/doutor.JPG)
+
+---
+## 実はすごいドトールグループ
+* Excelsior caffeもドトールグループ
+* 星野珈琲もドトールグループ
+
+![Excelsior caffeの画像](/imgs/doutor_and_ifttt/excelsior.jpg)
+![星野珈琲の画像](/imgs/doutor_and_ifttt/hoshino.png)
+
+* ドトールすごい
+
+---
+## About me
+* [Censored]
+* [Censored]で最もドトールを愛する男
+* このスライドもドトールで作ってる
+
+---
+# Doutor Lifehack
+
+---
+## お得にドトールへ行く (1)
+* バリューカード
+    * チャージ時に5~10%ポイント + 利用時に1%ポイント
+
+![選ばれし者だけが使えるブラックカード](/imgs/doutor_and_ifttt/blackcard.jpg)
+
+---
+## お得にドトールへ行く (2)
+* ビルのポイントカード
+    * 250円で1ポイント、20ポイントで500円券に
+
+---
+### お得にドトールへ行く (3)
+* Coffee beans day
+    * 毎月末はコーヒー豆が10%OFF
+
+---
+## 全部組み合わせると31%OFF
+* バリューカードは3万円まで入る
+* ➡️ 最大9300円(コーヒー41杯分)お得！
+* すごい！！！！
+
+---
+# 本題
+
+---
+# Wi-fi in ドトール
+
+---
+## Wi-fi in Doutor
+* ドトールはwii2 Premiumと契約してるのでwifi使い放題
+![wifi接続画面](/imgs/doutor_and_ifttt/wi_login.png)
+
+---
+## 接続する場合は、所定のメールアドレスに空メールを送る
+![wifi接続画面](/imgs/doutor_and_ifttt/wi_qr_code.png)
+
+---
+### メールを送るとパスワードが返ってくる
+![帰ってきたメールの画面](/imgs/doutor_and_ifttt/wifi_mail.png)  
+パスワードを入力するとwifiが使えるようになる
+
+---
+## Problem
+* いちいちQRコードでスキャンしないといけない
+* めんどくさい
+
+---
+## Proposed Method
+
+---
+## IFTTT
+* IF [THIS] THEN [THAT]
+* ex) [明日の予報が雨なら] ➡️ [携帯へpush通知を送る]
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/ifttt.png)
+
+---
+## STEP1
+### ドトールに近づいたらメールを送る
+* [ドトール付近なら] ➡️ [wifi用アドレスにメール送る]
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/location_to_mail.png)
+
+---
+## STEP2
+### 返ってきたメールをSlackに通知する
+* [Receive mail] ➡️ [Slackへ転送]
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/mail_to_slack.png)
+
+---
+## どうなるか
+* ドトールに近づくとパスワードがSlackに通知される
+
+![IFTTTの画像](/imgs/doutor_and_ifttt/push_by_loaction.png)
+![IFTTTの画像](/imgs/doutor_and_ifttt/slack.png)
+
+---
+# 便利！！！！！
+
+---
+# Future works
+
+---
+## Prolem
+* スマホに届いたパスワードをPCで打つのがだるい
+
+---
+## Universal Clipboard
+* macとiPhoneでClipboardを共有
+* iPhoneでパスワードをコピーしてmacでペースト
+![universal clipboard](/imgs/doutor_and_ifttt/Universal_clipboard.png)
+
+---
+## TODO
+* iPhoneを買う
+
+---
+## YOUR TODO
+* iPhoneを買ってあげる
+
+
+---
+## Conclusion
+* ドトールのwifiパスワード自動通知
+* IFTTTべんり
+
+---
+## ドトールへ行こう！！
+
+---
+## 最近のオススメ
+### スタバのカフェインレスコーヒー
+
+---
+## おわり
