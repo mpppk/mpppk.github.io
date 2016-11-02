@@ -53,11 +53,6 @@ reveal_dependencies:
 # Reveal.js subdirectory
 reveal_path: /reveal.js/
 
-# Don't change anything below
-# markdown: redcarpet
-highlighter: pygments
-# markdown_ext: ignoreme
-
 collections:
   books:
     output: true
