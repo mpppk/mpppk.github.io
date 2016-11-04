@@ -1,0 +1,197 @@
+---
+layout: reveal
+title:  "Perfect JavaScript - Chapter5"
+date:   2016-10-27 23:12:27 +0900
+categories: slides 
+---
+
+# Chapter11
+
+---
+## 11-1-1 スタイル変更方法 _P281_
+
+--
+### スタイル変更方法 (className, classLIst) _P281-P284_
+* classごとのstyleをあらかじめ定義しておき、動的にclassを変更する
+    * classNameプロパティ
+    ```js
+    var foo = document.getElementById('foo');
+    foo.className = 'foo-changed';
+    ```
+
+    * classListプロパティ
+    ```js
+    foo.classList.toggle('foo-changed);
+    ```
+    * classを変更するとその子要素のclassも変更されるので注意
+        * 大量の子要素があるとパフォーマンスに影響する
+
+--
+### スタイル変更方法
+* styleプロパティ _P284_
+```js
+var foo = document.getElementById('foo');
+foo.style.color = 'white';
+```
+    * デザインと密結合になるため、本来はcssで管理したほうが良い
+
+* スタイルシート自体の有効/無効化 _P285_
+
+```js
+document.getElementById('some-css').disabled = false;
+```
+
+---
+## 11-1-2 位置の指定 _P287_
+
+--
+### position属性 (1)
+* static (default)
+    * top, leftなどのプロパティで位置を指定できない
+* fixed
+    * ブラウザウィンドウを基準とした相対位置で指定
+    * webページをスクロールしても移動しない
+
+--
+### position属性 (2)
+* absolute
+    * (通常はbody要素に対する)相対位置で指定
+    * static以外が指定された要素の入れ子になっている場合はその要素からの相対位置
+* relative
+    * HTMLタグに従った配置を基準とした相対位置
+    * absoluteの基準にすることが多い
+
+--
+* 11-1-3 位置 _P288_
+
+```js
+function onclick(event){
+    // スクリーン座標 (ディスプレイの左上を原点とする座標系)
+    print(event.screenX + " " + event.screenY);
+
+    // ウィンドウ座標 (ブラウザ表示領域の左上を原点とする座標系)
+    print(event.clientX + " " + event.clientY);
+
+    // ドキュメント座標 (ドキュメントの左上を原点とする座標系)
+    // 文書全体での位置の値が得られる
+    print(event.pageX + " " + event.pageY);
+}
+```
+
+---
+### アニメーション
+* CSS3によるアニメーションも可能で、こちらを利用したほうが良い
+
+---
+### AJAX
+* Asynchronous JavaScript + XML
+* ページ遷移せずにコンテンツをロードする
+
+---
+### XMLHttpRequest
+* サーバへ動的にリクエストを送る際に利用する
+* 同期通信と非同期通信が可能だが、後者を利用すべき
+
+```js
+const xhr = new XMLHttpRequest();
+
+// 非同期通信
+xhr.onreadystatechange = () => {
+  // 4 => サーバからのレスポンス受信完了
+  if (xhr.readyState === 4) {
+    // httpレスポンスのステータスコード
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    }
+  }
+};
+// openでコネクションを張るわけではない
+xhr.open('GET', 'test');
+// サーバへリクエストを送信する
+// 引数には送信するデータを指定する(GETやDELETEの場合はnull)
+xhr.send(null);
+
+// 第三引数にfalseを指定すると同期通信
+xhr.open('GET', 'test', false);
+xhr.send(null); // 通信終了までここで止まる
+if(xhr.status === 200){
+  console.log(xhr.responseText);
+}
+```
+
+--
+### レスポンスのパース
+
+```js
+var str = "{x: 1}";
+var strJson = JSON.parse(str);
+strJson.x; // => 1
+
+var resJson = JSON.parse(xhr.responseText);
+```
+
+---
+### クロスオリジン制限
+* オリジンはURLのプロトコル、ホスト名、ポート番号の3つで構成される
+* ブラウザからは同じオリジンとしか通信できない
+    * => 同一オリジンポリシー
+    * http://hoge.com から読み込まれたhtmlからは、http://fuga.com にはアクセスできない
+
+--
+### クロスオリジン通信の実現手段
+* JavaScript以外
+    * サーバ側でリクエストを転送
+    * Flash
+* JavaScript
+    * JSONP
+    * iframeハック
+    * window.postMessage
+    * XMLHttpRequest level2
+
+--
+### window.postMessage
+* windowオブジェクト同士でmessageイベントを介してやり取りできる
+
+```js
+// 送信側
+window.postMessage('Hello!', 'http://hoge.com');
+
+// 受信側
+window.addEventListener('message', function(event) {
+    console.log(event.data); // => 'Hello!'
+}, false);
+```
+
+--
+### XMLHttpRequest level2
+* CORS
+
+---
+# Form
+
+--
+### HTMLFormElement
+* form内のinputは、name属性から参照できる
+* 入力値のバリデーションに使われることが多い
+```js
+document.user.email.value; // form.user>input[name=email]
+document.user.submit(); // データを送信。ただしsubmitイベントは発火しない
+```
+
+--
+### Formに関連するeventの発火タイミング
+
+event | 発火タイミング
+----- | -----------
+submit | データ送信時。ただしsubmitイベントでは発火しない
+focus | input要素にフォーカスが当たるタイミング
+blur | input要素からフォーカスが外れるタイミング
+change | 値の変更時。テキストボックスではinputを使う方が良い
+input | 値の入力時。文字を削除した場合も発火する
+
+--
+### submit時のページ遷移
+* submitの結果を表示するウィンドウはtarget属性で指定する
+    * 指定しなければ現在のウィンドウ
+* targetに空のiframeを指定することでページ遷移せずにformを利用できる
+    * そもそもformを利用すべきか検討する
