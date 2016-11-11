@@ -164,7 +164,9 @@ window.addEventListener('message', function(event) {
 
 --
 ### XMLHttpRequest level2
-* CORS
+* 何も考えずにクロスドメイン通信ができる
+* ただし、レスポンスに含まれるAccess-Control-Allow-Originヘッダーに、アクセス元のドメインが含まれている必要がある
+* Cookieを送信する場合はwithCredentialsプロパティをtrueにする
 
 ---
 # Form
