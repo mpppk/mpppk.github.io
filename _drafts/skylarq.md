@@ -6,19 +6,22 @@ title:  "JavaScriptでブラウザを自動操作できるnightmarejsを使っ�
 ## 背景
 集中するためにカフェに行く方は多いと思いますが、自分は最近ファミレスで作業しています。
 その中でもガストを含むすかいらーくグループでは、清算後のレシートにドリンクバーのクーポンが付いていることがあります。
-[画像]
+![receipt](/imgs/skylarq/receipt.jpg)
 
 ガストだとドリンクバーは199円なので、74円になると約63%OFFです。すごい。
 この画像は74円ですが、無料のクーポンも有るみたいです。
 さて、このクーポンですが、使うにはアンケートに答える必要があります。
-まずこのQRコードにアクセスします。
-[画像]
-アクセスするとこんな画面が出るので、クーポンに書かれているn桁の数字を入力します。
+まずレシートに書かれているQRコードにアクセスします。
+
+![top](/imgs/skylarq/top.png)
+アクセスすると表示される画面に、クーポンに書かれている24桁の数字を入力します。
 規約に同意すると、こんな感じでアンケートが表示されるので粛々と答えます。
-全部で33問あるみたいです。
-[画像]
-全ての質問に回答すると、５桁の数字が表示されます
-[画像]
+全部で34問あるみたいです。
+![question](/imgs/skylarq/question.png)
+
+全ての質問に回答すると、5桁の数字が表示されます
+![result](/imgs/skylarq/result.png)
+
 これをレシートに記入すれば、ようやくクーポンとして利用することができます。
 ガスト以外に行ったことがないのですが、すかいらーく系列店であるバーミヤン、夢庵、ジョナサンなどでも発行されるはずです。
 
@@ -29,21 +32,29 @@ title:  "JavaScriptでブラウザを自動操作できるnightmarejsを使っ�
 
 ## そこでNightmarejs(前置きが長い)
 Nightmarejsは、JavaScriptでブラウザを操作するためのライブラリです。
-例えば、公式ページのyahoo検索を行うサンプルコードは以下のようになります。
+例えば、yahoo検索を行うサンプルコードは以下のようになります。
 
-```js
-yield Nightmare()
-  .goto('http://yahoo.com')
-  .type('input[title="Search"]', 'github nightmare')
-  .click('.searchsubmit');
+```yahooSearch.js
+const Nightmare = require('nightmare');
+const co = require('co');
+
+co(function * (){
+  yield Nightmare({show: true})
+    .goto('http://yahoo.co.jp')
+    .type('input#srchtxt', 'nightmarejs')
+    .click('#srchbtn');
+});
+
 ```
 
 これを実行するとこんな感じになります。
 
 ```Shell
-$ node googleSearch.js
+$ node yahooSearch.js
 ```
-[gif]
+
+![nightmarejs_demo](/imgs/skylarq/nightmarejs_demo.gif)
+
 
 いやーお手軽ですね。
 これを使って、ガストのアンケートに自動回答するツールを作ります。
@@ -83,8 +94,6 @@ console.log(question);
 $ npm install -g skylarq
 ```
 
-(nodeが必要なので、入ってない方は先にインストールしておいてください。)
-
 ### 使い方
 まずアンケートにどのように答えるかを設定するファイルを作成します。
 以下のコマンドを実行すると、ホームディレクトリにskylarq.ymlが生成されます。
@@ -96,7 +105,6 @@ $ skylarq --init
 `skylarq.yml`には、以下のように質問とその回答が書かれています。
 questions以下のanswerを回答したい内容に書き換えていきましょう。
 `code`には、レシートに書かれているn桁の番号を入力しておきます。
-[codeがどれかを示す画像]
 一度回答してしまえば、二度目からは変わった点を変更するだけで済むようになります。
 
 ```yml
@@ -134,9 +142,5 @@ coupon code: 12345
 それぐらい行ってもテストのためのクーポンが足りないため、skylarq.ymlの質問網羅度は全然足りておらず、存在しない質問が表示された場合は回答が途中で中断されてしまいます。
 特にガスト以外が近所にないので、他のすかいらーく系列店は現状質問が全く存在していません。
 もし新たな質問文を発見したら、お気軽にissueを立てていただけるとありがたいです。
-(issue作成時には以下のようなテンプレートが初期状態で入力されているので簡単です。)
-
-```md
-```
 
 フィードバックお待ちしてます！
