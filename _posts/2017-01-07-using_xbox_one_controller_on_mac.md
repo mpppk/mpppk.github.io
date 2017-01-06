@@ -8,6 +8,7 @@ title:  "Xbox One コントローラをmac上のSteamで使う"
 DLは[GitHubのrelease page](https://github.com/360Controller/360Controller/releases)から。
 
 ただし、installして有線でmacに繋いでも、driverからは認識されるがSteamのゲームからは見えない。
+
 1. Advancedタブをクリック
 1. Spoofing Preferencesの[Pretend to be an Xbox 360 Controller]にチェックを入れる
 
